@@ -71,16 +71,18 @@ public class GameLogic {
 		return tempCard;
 	}
 
-	public static boolean check(Player player){
-		int playerValue;
+	public static boolean check(Player player, Player dealer){
+		int playerValue = player.getPlayerHand().getValue();
+		int dealerValue = dealer.getPlayerHand().getValue();
 		
-		playerValue = player.getPlayerHand().getValue();
-		
-		if(playerValue > 21){
-			System.out.println("Loser");
-			return false;
-		} else {
+		if(dealerValue > 21 && playerValue <= 21){
 			return true;
+		} else if (playerValue > 21){
+			return false;
+		} else if(playerValue > dealerValue){
+			return true;
+		} else {
+			return false;
 		}
 		
 	}
