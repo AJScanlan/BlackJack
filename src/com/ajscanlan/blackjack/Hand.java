@@ -39,4 +39,11 @@ public class Hand {
 		return temp.toString();
 	}
 
+	public Card getCard(int i){
+		return hand.get(i);
+	}
+	
+	public int getSize(){
+		return hand.size();
+	}
 }

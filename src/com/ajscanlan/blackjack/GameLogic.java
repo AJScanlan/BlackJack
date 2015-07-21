@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameLogic {
-	
+
 	public static ArrayList<Card> deck = new ArrayList<>();
-	
+
 	public static void setupGame(){
 		populateDeck();
 		shuffle();
 	} 
-	
+
 	public static void populateDeck(){
 		populateDeck("Hearts");
 		populateDeck("Diamonds");
 		populateDeck("Clubs");
 		populateDeck("Spades");
 	}
-	
+
 	public static void populateDeck(String suit){
 		int suitLimit = (52 / 4);
 		String tempRank = "";
@@ -55,7 +55,7 @@ public class GameLogic {
 			deck.add(tempCard);
 		}
 	}
-	
+
 	public static void shuffle(){
 		Collections.shuffle(deck);
 		Collections.shuffle(deck);
@@ -69,6 +69,14 @@ public class GameLogic {
 		tempCard = deck.get(0);
 		deck.remove(0);
 		return tempCard;
+	}
+
+	public static void hit(){
+		GameLoop.player.getPlayerHand().addCard(GameLogic.deal());
+	}
+
+	public static void stand(){
+		GameLoop.stand = true;
 	}
 
 	public static boolean check(Player player, Player dealer){
@@ -86,4 +94,6 @@ public class GameLogic {
 		}
 		
 	}
+
+	
 }
